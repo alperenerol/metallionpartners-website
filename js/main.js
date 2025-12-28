@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollEffects();
     initContactForm();
     initAnimations();
+    initResizeScrollPreserver();
 });
 
 /**
@@ -202,7 +203,7 @@ function initAnimations() {
             .nav-links.mobile-active {
                 display: flex;
                 position: fixed;
-                top: 70px;
+                top: 100px;
                 left: 0;
                 right: 0;
                 background: rgba(3, 7, 18, 0.98);
@@ -211,6 +212,12 @@ function initAnimations() {
                 gap: 1.5rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                 backdrop-filter: blur(20px);
+                z-index: 999;
+            }
+            
+            .nav-links.mobile-active a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
             }
             
             .mobile-menu-btn.active span:nth-child(1) {
@@ -248,6 +255,41 @@ function initAnimations() {
             heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
         });
     }
+}
+
+/**
+ * Preserve scroll position during window resize
+ */
+function initResizeScrollPreserver() {
+    let scrollPercentage = 0;
+    let isResizing = false;
+    let resizeTimeout;
+    
+    // Track scroll position as percentage of document height
+    window.addEventListener('scroll', () => {
+        if (!isResizing) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollPercentage = docHeight > 0 ? window.scrollY / docHeight : 0;
+        }
+    });
+    
+    // On resize, restore scroll position
+    window.addEventListener('resize', () => {
+        isResizing = true;
+        
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const newScrollY = scrollPercentage * docHeight;
+            
+            window.scrollTo({
+                top: newScrollY,
+                behavior: 'instant'
+            });
+            
+            isResizing = false;
+        }, 100);
+    });
 }
 
 /**
