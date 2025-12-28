@@ -1,6 +1,6 @@
-# MetaLlion Partners Website
+# Metallion Partners Website
 
-Official website for MetaLlion Partners - Intelligent SaaS Solutions.
+Official website for Metallion Partners - Intelligent SaaS Solutions.
 
 ## 🌐 Live Site
 
@@ -65,5 +65,5 @@ live-server
 
 ## 📄 License
 
-© 2025 MetaLlion Partners. All rights reserved.
+© 2025 Metallion Partners. All rights reserved.
 

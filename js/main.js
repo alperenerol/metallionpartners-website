@@ -1,5 +1,5 @@
 /**
- * MetaLlion Partners - Main JavaScript
+ * Metallion Partners - Main JavaScript
  */
 
 document.addEventListener('DOMContentLoaded', () => {
