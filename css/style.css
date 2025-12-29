@@ -4,28 +4,28 @@
 
 /* CSS Variables */
 :root {
-    /* Colors - Deep Navy & Gold Accent */
+    /* Colors - Black & Gold Accent */
     --primary: #c9a227;
     --primary-light: #ddb84d;
     --primary-dark: #a68519;
-    --secondary: #080d18;
-    --secondary-light: #0c1220;
+    --secondary: #000000;
+    --secondary-light: #0a0a0a;
     
     --text: #f8fafc;
     --text-muted: #94a3b8;
-    --text-dark: #080d18;
+    --text-dark: #000000;
     
-    --bg-dark: #020408;
-    --bg-card: #080d18;
-    --bg-card-hover: #0c1220;
+    --bg-dark: #000000;
+    --bg-card: #0a0a0a;
+    --bg-card-hover: #111111;
     
     --border: rgba(201, 162, 39, 0.15);
     --border-light: rgba(255, 255, 255, 0.08);
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    --gradient-dark: linear-gradient(180deg, #020408 0%, #080d18 100%);
-    --gradient-glow: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+    --gradient-dark: #000000;
+    --gradient-glow: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
     
     /* Spacing */
     --space-xs: 0.5rem;
@@ -366,10 +366,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-muted);
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto var(--space-xl);
     animation: fadeInUp 0.6s ease 0.2s forwards;
     opacity: 0;
+}
+
+.hero-subtitle-emphasis {
+    display: block;
+    margin-top: var(--space-xs);
+    color: var(--primary);
+    font-style: italic;
 }
 
 .hero-cta {
@@ -804,6 +811,31 @@ section {
     font-weight: 500;
 }
 
+.founder-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-top: var(--space-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.founder-linkedin:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.founder-linkedin svg {
+    width: 18px;
+    height: 18px;
+}
+
 /* ========================================
    Global Footprint Section
    ======================================== */
@@ -979,7 +1011,7 @@ section {
    ======================================== */
 
 .footer {
-    background: var(--bg-card);
+    background: var(--bg-dark);
     padding: var(--space-2xl) 0 var(--space-lg);
 }
 
