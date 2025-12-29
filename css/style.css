@@ -879,12 +879,21 @@ section {
 
 .region-card h3 {
     font-size: 1.25rem;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
     color: var(--primary);
 }
 
+.region-industry {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+    opacity: 0.9;
+}
+
 .region-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.6;
 }
