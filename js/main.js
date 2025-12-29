@@ -104,7 +104,7 @@ function initScrollEffects() {
 }
 
 /**
- * Contact Form
+ * Contact Form - Connected to Cloudflare Worker
  */
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -125,23 +125,36 @@ function initContactForm() {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         
-        // Simulate form submission (replace with actual API call)
         try {
-            await simulateSubmit(data);
+            // Send to Cloudflare Worker
+            const response = await fetch('https://contact-form.alpi067.workers.dev', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
             
-            // Success
-            submitBtn.textContent = 'Message Sent!';
-            submitBtn.classList.add('success');
-            form.reset();
+            const result = await response.json();
             
-            // Reset button after delay
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.classList.remove('success');
-                submitBtn.disabled = false;
-            }, 3000);
+            if (result.success) {
+                // Success
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.classList.add('success');
+                form.reset();
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.classList.remove('success');
+                    submitBtn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error(result.error || 'Failed to send message');
+            }
             
         } catch (error) {
+            console.error('Form submission error:', error);
             // Error
             submitBtn.textContent = 'Error. Try again.';
             submitBtn.classList.add('error');
@@ -152,25 +165,6 @@ function initContactForm() {
                 submitBtn.disabled = false;
             }, 3000);
         }
-    });
-}
-
-/**
- * Simulate form submission (replace with actual API integration)
- */
-function simulateSubmit(data) {
-    return new Promise((resolve, reject) => {
-        console.log('Form submitted:', data);
-        
-        // Simulate network delay
-        setTimeout(() => {
-            // Randomly succeed or fail for demo
-            if (Math.random() > 0.1) {
-                resolve({ success: true });
-            } else {
-                reject(new Error('Submission failed'));
-            }
-        }, 1500);
     });
 }
 
