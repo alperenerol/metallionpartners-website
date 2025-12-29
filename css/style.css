@@ -505,72 +505,97 @@ section {
 }
 
 /* ========================================
-   Solutions Section
+   Services Section
    ======================================== */
 
-.solutions {
+.services {
     background: var(--bg-dark);
 }
 
-.solutions-grid {
+.services-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--space-lg);
 }
 
-.solution-card {
-    padding: var(--space-lg);
+.service-card {
+    padding: var(--space-xl);
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
 }
 
-.solution-card:hover {
+.service-card:hover {
     border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
-.solution-card-large {
-    grid-row: span 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, var(--bg-card) 100%);
-}
-
-.solution-tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--primary);
-    margin-bottom: var(--space-sm);
-}
-
-.solution-card h3 {
-    margin-bottom: var(--space-xs);
-}
-
-.solution-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+.service-header {
     margin-bottom: var(--space-md);
 }
 
-.solution-link {
-    display: inline-flex;
+.service-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: gap var(--transition-fast);
+    justify-content: center;
+    background: rgba(201, 162, 39, 0.1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
 }
 
-.solution-link:hover {
-    gap: var(--space-sm);
+.service-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--primary);
+}
+
+.service-header h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    color: var(--text);
+}
+
+.service-tagline {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.service-description {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+.service-capabilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-capabilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: var(--space-xs);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.service-capabilities li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 600;
 }
 
 /* ========================================
@@ -736,6 +761,100 @@ section {
 
 .about-stat-label {
     color: var(--text-muted);
+}
+
+/* Founder Photo */
+.founder-photo {
+    position: relative;
+    text-align: center;
+}
+
+.founder-img {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--border);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition-base);
+}
+
+.founder-img:hover {
+    transform: scale(1.02);
+}
+
+.founder-info {
+    margin-top: var(--space-md);
+    text-align: center;
+}
+
+.founder-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--space-xs);
+}
+
+.founder-title {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* ========================================
+   Global Footprint Section
+   ======================================== */
+
+.footprint {
+    background: var(--gradient-dark);
+}
+
+.footprint-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.region-card {
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.region-card:hover {
+    border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.region-flags {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.region-flags .flag {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.region-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+    color: var(--primary);
+}
+
+.region-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
 /* ========================================
@@ -985,12 +1104,8 @@ section {
    ======================================== */
 
 @media (max-width: 1024px) {
-    .solutions-grid {
+    .services-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .solution-card-large {
-        grid-row: auto;
     }
     
     .about-grid {
